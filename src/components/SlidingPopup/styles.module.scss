@@ -1,0 +1,112 @@
+@keyframes buttonHoverEffect {
+  from {
+    background-color: rgba(200, 200, 200, 0.5);
+    border-color: rgb(255, 255, 255);
+  }
+
+  50% {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-color: rgb(150, 150, 150);
+  }
+  to {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-color: rgb(225, 225, 225);
+  }
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // size
+  width: 100vw;
+  height: 100vh;
+
+  // position
+  top: 0;
+  left: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  background-color: transparent;
+  backdrop-filter: brightness(40%) blur(1px);
+  z-index: 2;
+  transition: opacity 0.2s;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+  }
+
+  .contentArea {
+    padding: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 30vh;
+    min-height: 22em;
+    // max-height: 430px;
+    background-color: black;
+    left: -100vw;
+    visibility: inherit;
+    user-select: none;
+
+    color: white;
+
+    // Effects
+    box-shadow: 0px 5px 15px 20px rgba(175, 220, 255, 0.1),
+      0px -5px 15px 20px rgba(175, 220, 255, 0.1);
+
+    &.open {
+      left: inherit;
+      // transition: left 0.3s ease-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: 500;
+      letter-spacing: 0.1ch;
+      margin: 0;
+      // Effects
+      // text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em white;
+    }
+    .main {
+      > * {
+        font-size: 1.5em;
+        font-family: Helvetica;
+      }
+    }
+    .footer {
+      display: flex;
+      column-gap: 2em;
+      .button {
+        border: 0.13em solid rgb(200, 200, 200);
+        background-color: black;
+        height: 3em;
+        width: 14em;
+        border-radius: 1.5em;
+        color: rgb(200, 200, 200);
+        font-size: 1em;
+        padding-left: 4em;
+        padding-right: 4em;
+        cursor: pointer;
+        text-overflow: clip;
+        white-space: nowrap;
+        text-transform: capitalize;
+        // font-variant: small-caps;
+
+        &:hover {
+          animation: buttonHoverEffect 1s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+}

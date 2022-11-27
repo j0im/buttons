@@ -1,0 +1,13 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript, typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+// Default (format when you paste)
+"editor.formatOnPaste": true,
+// Default (format when you save)
+"editor.formatOnSave": true,
+"[typescript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+}
