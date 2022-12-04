@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'respace';
+  src: local('respace'), url('./fonts/RespaceRegular.otf') format('opentype');
+}
+
+$bgColor: rgba(44, 44, 44, 0.8);
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  background-image: url('./images/smoke.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 18px;
+  display: grid;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'menu'
+    'pagecontent';
+
+  .menuBar {
+    grid-area: menu;
+    width: auto;
+    position: fixed;
+    top: 2em;
+    left: 20px;
+    padding-right: 2em;
+    padding-left: 0.5em;
+    background-color: $bgColor;
+    border-radius: 0.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .menuText {
+      color: rgba(255, 255, 255, 0.6);
+      padding-right: 2ch;
+      font-weight: 600;
+      font-variant: small-caps;
+      user-select: none;
+      font-family: Roboto;
+    }
+  }
+  .content {
+    grid-area: pagecontent;
+    display: flex;
+    justify-content: center;
+
+    .mouseEffect {
+      width: 40vh;
+      height: 50vh;
+      background-color: white;
+    }
+  }
+}
+* {
+  box-sizing: border-box;
+  font-family: respace, roboto, arial;
+  margin: 0;
+  padding: 0;
+}

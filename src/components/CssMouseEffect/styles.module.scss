@@ -1,0 +1,95 @@
+.container {
+  position: relative;
+  top: 10%;
+  left: 10%;
+  bottom: 10%;
+  right: 10%;
+  width: 80%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+
+  // &::before {
+  //   content: '';
+  //   width: 50px;
+  //   height: 50px;
+  //   border-radius: 50%;
+  //   background-image: radial-gradient(circle at center, yellow, transparent);
+  //   position: absolute;
+  //   top: var(--positionY);
+  //   left: var(--mouse-x);
+  //   transform: translate(-50%, -50%);
+  // }
+
+  @for $i from 0 to 10 {
+    .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
+      --positionX: #{$i};
+    }
+    .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover
+      ~ .content {
+      --positionY: #{$i};
+    }
+  }
+
+  .cell {
+    z-index: 3;
+  }
+
+  .content {
+    border: 1px solid gray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    --positionX: 0;
+    --positionY: 0;
+
+    box-shadow: calc((var(--positionX) * 0.1 - 0.4) * -1px * 10)
+      calc((var(--positionY) * 0.1 - 0.4) * -1 * 10px) 5px rgba(0, 0, 0, 0.4);
+
+    .mousePointer {
+      font-family: 'Roboto', cursive;
+      position: absolute;
+      width: 50%;
+      // top: 50%;
+      // left: 50%;
+      // animation: color 3s infinite linear;
+      text-shadow: 0 0 10px #000a;
+      transition: all 0.5s;
+      // width: 100%;
+      z-index: 2;
+
+      cursor: none;
+      color: hsl(calc(var(--positionX) * var(--positionY) * 3.6deg), 100%, 50%);
+
+      @for $i from 0 to 10 {
+        &:nth-child(#{$i + 1}) {
+          font-size: #{20 + $i * 2}px;
+          animation-delay: #{$i * -0.3}s;
+          opacity: #{0.5 + $i * 0.1};
+          // transform: rotate(var(--positionX));
+          transform: translateX(
+              calc((var(--positionX) - 2) * #{(2 - $i) * 1px})
+            )
+            translateY(calc((var(--positionY) - 2) * #{(2 - $i) * 1px}))
+            rotateX(calc(0deg - (var(--positionY) - 4) * 4deg))
+            rotateY(calc((var(--positionX) - 4) * 4deg));
+        }
+      }
+
+      @keyframes color {
+        @for $c from 0 through 10 {
+          #{$c * 5%} {
+            color: hsl(0, $c * 2%, 50%);
+          }
+        }
+      }
+    }
+  }
+}
