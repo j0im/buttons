@@ -1,0 +1,50 @@
+.container {
+  background-color: transparent;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  filter: url('#goo');
+}
+
+.blobs {
+  filter: url('#goo') drop-shadow(0 0 0.75rem crimson);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.square {
+  position: absolute;
+  border-radius: 50%;
+  background: #5677fc;
+  top: 0;
+  left: 0;
+  width: 75px;
+  height: 75px;
+  transition: all 1.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // border: 1px dashed transparent;
+  box-sizing: border-box;
+  transform: translate(110%);
+  cursor: pointer;
+
+  // & > div {
+  //   trans
+  // }
+  &:hover {
+    // border: 1px dashed whitesmoke;
+  }
+}
+
+.show {
+  transform: translate(0);
+  top: 0;
+  left: 0;
+  border: none;
+}

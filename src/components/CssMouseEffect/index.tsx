@@ -1,8 +1,8 @@
 import styles from './styles.module.scss'
-import { useLayoutEffect, useEffect } from 'react'
+import { useLayoutEffect, useEffect, useState } from 'react'
 
 const CssMouseEffect = () => {
-  const [showMouse, setShowMouse] = useState(false)
+  // const [showMouse, setShowMouse] = useState(false)
   const filledArray = new Array(10)
     .fill(null)
     .map((_, index) => Array(10).fill(<div className={styles.cell}></div>))

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styles from './App.module.scss'
 import icons from './icons.json'
-import { CoolButton, SlidingPopup } from './components'
+import { CoolButton, Goo, SlidingPopup } from './components'
 import './fonts/RespaceRegular.otf'
-import { CssMouseEffect } from './components/CssMouseEffect'
+// import { CssMouseEffect } from './components/CssMouseEffect'
 // import round from './images/roundOutline.svg'
 // import scifi from './icons/ski.png'
 
@@ -35,9 +35,7 @@ const App = () => {
         ))}
       </div>
       <div className={styles.content}>
-        <div className={styles.mouseEffect}>
-          <CssMouseEffect />
-        </div>
+        {/* <div className={styles.mouseEffect}><CssMouseEffect /></div> */}
       </div>
       {/* <div onClick={() => handleOpen(!showPopup)}>Popup</div> */}
       <SlidingPopup
@@ -47,6 +45,8 @@ const App = () => {
       >
         <div>Save or discard changes before exiting?</div>
       </SlidingPopup>
+
+      <Goo></Goo>
     </div>
   )
 }
